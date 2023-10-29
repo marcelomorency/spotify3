@@ -1,0 +1,12 @@
+a:nth-child(2) {
+    background-color: black;
+    color: white;
+    
+}
+
+.criar_playlist{
+    font-size: 20px;
+    padding: 6px;
+   
+    color: #757070;
+}
