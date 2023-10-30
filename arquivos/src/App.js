@@ -9,7 +9,7 @@ import UserSignin from './users/signin/login.js';
 import PlayLists from './pages/playlists/playLists';
 import MusicList from './componentes/MusicList';
 import CadastroPlaylist from './cadastro_playlist/cadastro_playlist.js';
-import PaginaCadastro from './pagina_cadastro/pagina_cadastro';
+import PaginaCadastro from './pagina_cadastro/pagina_cadastro.js';
 function App() {
   return (
     <BrowserRouter>
@@ -24,10 +24,13 @@ function App() {
               <Route path="/playlists/playlist/:id"  element={<MusicList />} />
               <Route path="/cadastro_playlist" element={<CadastroPlaylist/>} />
               <Route path="/pagina_cadastro" element={<PaginaCadastro/>} />
+              
             </Routes>
             <Footer/>
+            
       </div>
     </BrowserRouter>
+  
   );
 }
 

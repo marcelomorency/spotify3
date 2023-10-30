@@ -1,12 +1,23 @@
-a:nth-child(2) {
+.botao_cadastrar{
+    display: inline-block;
+    color: #f1f1f1;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: sans-serif;
     background-color: black;
-    color: white;
-    
+    font-size: 20px;
 }
 
-.criar_playlist{
+.botao_input{
     font-size: 20px;
-    padding: 6px;
-   
+    padding: 10px 20px;
+    margin-bottom: 10px;
     color: #757070;
+    border-radius: 5px;
+}
+
+h1{
+    font-weight: bold;
+    font-size: 50px;
 }
