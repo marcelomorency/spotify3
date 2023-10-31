@@ -5,7 +5,43 @@ import Storm from "../assets/musicas/Antonio Vivaldi - Storm (320 kbps).mp3";
 import HungarianDance from "../assets/musicas/Johannes Brahms - Hungarian Dance No. 5 (320 kbps).mp3";
 import Requiem from "../assets/musicas/Mozart - Requiem (320 kbps).mp3";
 import RequimDMinor from "../assets/musicas/Mozart - Requiem in D Minor (Lacrimosa) (320 kbps).mp3";
+import React from 'react'
 
+
+
+
+function Deletar({ cardMusic }) {
+    function deleteMusic(playlistIndex, musicIndex) {
+    
+      cardMusic[playlistIndex].musicas.splice(musicIndex, 1);
+    }
+  
+    return (
+      <div>
+        {cardMusic.map((playlist, playlistIndex) => (
+          <div key={playlist.id}>
+            <h2>{playlist.titleMusic}</h2>
+            <img src={playlist.linkPhoto} alt={playlist.titleMusic} />
+            <ul>
+              {playlist.musicas.map((music, musicIndex) => (
+                <li key={music.id}>
+                  {music.nome}
+                  {music.deletable && (
+                    <button
+                      onClick={() => deleteMusic(music.id)}
+                    >
+                      Excluir
+                    </button>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    );
+  }
+  
 export const cardMusic = [
     {
         id: 0,
@@ -16,21 +52,25 @@ export const cardMusic = [
                 id: 1,
                 nome: "Eine Kleine Nachtmusik",
                 arquivo: EineKleineNachtmusik, // Colocar o caminho da música
+                deletable: true,
             },
             {
                 id: 2,
                 nome: "Beethoven - Moonlight Sonata 1st Movement",
                 arquivo: MoonlightSonata, // Colocar o caminho da música
+                deletable: true,
             },
             {
                 id: 3,
                 nome: "Erik Satie - Gymnopédie No.1",
                 arquivo: Gymnopedie, // Colocar o caminho da música
+                deletable: true,
             },
             {
                 id: 4,
                 nome: "Antonio Vivaldi - Storm",
                 arquivo: Storm, // Colocar o caminho da música
+                deletable: true,
             }
         ]
     },
@@ -117,4 +157,4 @@ export const cardMusic = [
     }
 ]
 
-export default cardMusic;
+export default Deletar;
