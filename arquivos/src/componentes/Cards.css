@@ -113,6 +113,12 @@ h1 {
   }
 }
 
-  
-  
+.delete-button{
+  border: unset;
+  background-color: unset;
+  font-size: 25px;
+  color: white;
+  top: 20%;
+  right: 10px;
+}
   

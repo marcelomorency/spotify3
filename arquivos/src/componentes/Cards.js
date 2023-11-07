@@ -2,9 +2,20 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "./Cards.css";
 import { Link } from "react-router-dom";
-
+import {BiTrash} from "react-icons/bi";
+import PlayLists from "../pages/playlists/playLists";
 export default function Cards() {
-    const [playlists, setPlaylists] = useState([]);
+    const handleDelete = (id) => {
+        axios
+          .delete(`http://localhost:3001/playlists/${id}`)
+          .then((response) => {
+            setPlaylists(playlists.filter((playlist) => playlist.id !== id));
+          })
+          .catch((error) => {
+            console.error("Erro ao excluir a playlist:", error);
+          });
+      };
+    const [playlists, setPlaylists,] = useState([]);
 
     useEffect(() => {
         axios.get('http://localhost:3001/playlists')
@@ -26,10 +37,15 @@ export default function Cards() {
                         <img src={playlists.linkPhoto} alt="Capa da Música" />
                         <h3>{playlists.titleMusic}</h3>
                         <p>{playlists.name}</p>
+                        <button type="button" className="delete-button" onClick={() => handleDelete(PlayLists.musica)}><BiTrash/></button>
+
                     </Link>
+ 
                 ))}
             </div>
+            
             <Link to="/cadastro_playlist" className="cta-button">Cadastrar playlist</Link>
         </div>
+    
     );
 }
