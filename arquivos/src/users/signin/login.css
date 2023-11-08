@@ -109,13 +109,12 @@ a:nth-child(3) {
 }
 
 .btn-primary{
-    cursor: pointer;
-    font-size: 30px;
-    align-items: center;
-    margin-top: 15px;
-    margin-bottom: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: #1DB954;
-    
+    display: inline-block;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: sans-serif;
+    background-color: greenyellow;
+    font-size: 20px;
 }

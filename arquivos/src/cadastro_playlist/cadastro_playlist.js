@@ -49,7 +49,8 @@ export default function CadastroPlaylist() {
                     />
                 </div>
                 <div>
-                    <input className="botao_cadastrar" type="submit" value="Cadastrar Playlist" />
+                    <input className="botao_cadastrar" type="submit" value="Cadastrar Playlist" /><br>
+                    </br>
                     <Link to="/playlists" className="cta-button">voltar</Link>
                 </div>
             </form>

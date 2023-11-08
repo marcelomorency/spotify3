@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-
-
+import "./header.css";
 export default function Header() {
     return(
         <header className="Header-main">
@@ -18,7 +17,7 @@ export default function Header() {
                 <li className="liFaq">
                     <Link to="/faq" className="page">FAQ</Link>
                 </li>
-                <li>|</li>
+                
                 <li className="liCadastro">
                     <Link to="/users/signup" className="page">Cadastrar</Link>
                 </li>

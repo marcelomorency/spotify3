@@ -13,7 +13,7 @@ export default function UserSignup() {
   async function checkUserExists(email) {
     try {
       const response = await axios.get(`http://localhost:3001/users?email=${email}`);
-      return response.data.length > 0; 
+      return response.data.length > 0; // Se existir algum usuário com o mesmo email, retorna verdadeiro.
     } catch (error) {
       console.error("Erro ao verificar a existência do usuário:", error);
       return false;
