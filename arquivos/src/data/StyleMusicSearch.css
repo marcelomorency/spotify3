@@ -1,0 +1,35 @@
+/* StyleMusicSearch.css */
+.search-container {
+    margin-top: 20px;
+  }
+  
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .form-control {
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .btn-primary {
+    background-color: #1e1e1f;
+    color: #fff;
+    padding: 10px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    margin: 10px 0;
+  }
+  
+  .music-element {
+    color: #a39f9f; /* Defina a cor que desejar aqui */
+  }

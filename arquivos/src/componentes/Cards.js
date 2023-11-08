@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import "./Cards.css";
 import { Link } from "react-router-dom";
 import {BiTrash} from "react-icons/bi";
-import PlayLists from "../pages/playlists/playLists";
+
 export default function Cards() {
     const handleDelete = (id) => {
         axios
@@ -31,20 +31,22 @@ export default function Cards() {
     return (
         <div className="music-right">
             <h1>Top {playlists.length} PlayLists mais tocadas em 2023!</h1>
+            
+            <Link to="/cadastro_playlist" className="cta-button">Cadastrar playlist</Link>
             <div className="card-container">
                 {playlists.map((playlists, index) => (
                     <Link className="music-card" to={`playlist/${playlists.id}`} key={index}>
                         <img src={playlists.linkPhoto} alt="Capa da Música" />
                         <h3>{playlists.titleMusic}</h3>
                         <p>{playlists.name}</p>
-                        <button type="button" className="delete-button" onClick={() => handleDelete(PlayLists.musica)}><BiTrash/></button>
+                        <button type="button" className="delete-button" onClick={() => handleDelete(playlists.id)}><BiTrash/></button>
 
                     </Link>
  
                 ))}
             </div>
             
-            <Link to="/cadastro_playlist" className="cta-button">Cadastrar playlist</Link>
+            
         </div>
     
     );

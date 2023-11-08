@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import { cardMusic } from '../data/cardMusic';
-
+import "./cadastro.css";
+import { Link } from "react-router-dom";
 export default function CadastroPlaylist() {
     const [nomePlaylist, setNomePlaylist] = useState("");
 
@@ -49,6 +50,7 @@ export default function CadastroPlaylist() {
                 </div>
                 <div>
                     <input className="botao_cadastrar" type="submit" value="Cadastrar Playlist" />
+                    <Link to="/playlists" className="cta-button">voltar</Link>
                 </div>
             </form>
         </div>

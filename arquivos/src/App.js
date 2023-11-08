@@ -24,7 +24,6 @@ function App() {
               <Route path="/playlists" element={<PlayLists />}/>
               <Route path="/playlists/playlist/:id"  element={<MusicList />} />
               <Route path="/cadastro_playlist" element={<CadastroPlaylist/>} />
-              <Route path="/pagina_cadastro" element={<PaginaCadastro/>} />
               <Route path="/data/cardMusic.js" element={<Deletar/>} />
             </Routes>
             <Footer/>

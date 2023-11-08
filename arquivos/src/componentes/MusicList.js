@@ -1,48 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
-import { cardMusic } from '../data/cardMusic'; // Importe seu vetor de playlists
 import './MusicList.css';
-
+import axios from 'axios';
 
 function MusicList() {
-    const [currentSong, setCurrentSong] = useState(null); //hook use state para analisar o estado da musica que esta tocando no atual momento
-    const { id } = useParams(); // hook use params para obter o id da playlist vindo da url
-    const playlist = cardMusic.find((p) => p.id === parseInt(id)); // metodo find para achar a playlist correta, uma vez que ele analisa se o id e o valor do hook sao iguais
+  const [currentSong, setCurrentSong] = useState(null);
+  const { id } = useParams();
+  const [playlist, setPlaylist] = useState(null);
 
-    //mensagem de erro caso a playlist nao for encontrada
-    if (!playlist) {
-        return <div>Playlist não encontrada.</div>;
+  useEffect(() => {
+    axios.get(`http://localhost:3001/playlists/${id}`)
+      .then((response) => {
+        setPlaylist(response.data);
+      })
+      .catch((error) => {
+        console.error('Erro ao buscar a playlist:', error);
+      });
+  }, [id]);
+
+  if (!playlist) {
+    return <div>Playlist não encontrada.</div>;
+  }
+
+  const playSong = (audioUrl) => {
+    if (currentSong) {
+      currentSong.pause();
+      currentSong.currentTime = 0;
     }
 
-    // funcao responsavel por tocar a musica baseada na current song, usando o objeto Audio do react
-    const playSong = (audioUrl) => {
-        if (currentSong) {
-            currentSong.pause();
-            currentSong.currentTime = 0;
-        }
+    const audio = new Audio(audioUrl);
+    audio.play();
+    setCurrentSong(audio);
+  };
 
-        const audio = new Audio(audioUrl);
-        audio.play();
-        setCurrentSong(audio);
-    };
-
-    return (
-        <div>
-            <h1 className='playlist-title'>{playlist.titleMusic}</h1>
-            <img className='playlist-image' src={playlist.linkPhoto} alt={playlist.titleMusic} />
-            <ul className='music-list'>
-                {/* funcao map que percorre o vetor musica dentro do vetor playlist e mostra os valores especificos */}
-                {playlist.musicas.map((musica) => (
-                    <>
-                        <li className="music-item" key={musica.id}>{musica.nome}</li>
-                        <span className="play-icon"
-                            onClick={() => playSong(musica.arquivo)}>&#9654; Play</span>
-                    </>
-                ))}
-            </ul>
-        </div>
-    );
+  return (
+    <div>
+      <h1 className='playlist-title'>{playlist.titleMusic}</h1>
+      <img className='playlist-image' src={playlist.linkPhoto} alt={playlist.titleMusic} />
+      <ul className='music-list'>
+        {playlist.musicas.map((musica) => (
+          <div key={musica.id}>
+            <li className="music-item">{musica.nome}</li>
+            <span className="play-icon" onClick={() => playSong(musica.arquivo)}>&#9654; Play</span>
+          </div>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default MusicList;

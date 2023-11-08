@@ -10,11 +10,26 @@ export default function UserSignup() {
   const [confirmSenha, setConfirmSenha] = useState("");
   const [error, setError] = useState("");
 
+  async function checkUserExists(email) {
+    try {
+      const response = await axios.get(`http://localhost:3001/users?email=${email}`);
+      return response.data.length > 0; 
+    } catch (error) {
+      console.error("Erro ao verificar a existência do usuário:", error);
+      return false;
+    }
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
 
     if (senha !== confirmSenha) {
-      alert("Senhas não conferem");
+      window.alert("Senhas não conferem");
+      return;
+    }
+
+    if (await checkUserExists(email)) {
+      alert("Este usuário já existe. Escolha outro email.");
       return;
     }
 
@@ -23,14 +38,14 @@ export default function UserSignup() {
 
       const response = await axios.post("http://localhost:3001/users", user);
 
-      if (response.status === 200) {
-        console.log("Usuário cadastrado com sucesso!");
+      if (response) {
+        window.alert("Usuário cadastrado com sucesso!");
         
       } else {
-        console.error("Erro ao cadastrar o usuário.");
+        window.alert("Erro ao cadastrar o usuário.");
       }
     } catch (error) {
-      console.error("Erro ao cadastrar o usuário:", error);
+      window.alert("Erro ao cadastrar o usuário:");
     }
 
     
