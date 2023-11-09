@@ -185,5 +185,27 @@
       "endereco": "",
       "id": 12
     }
+  ],
+  "musicas": [
+    {
+      "id": 1,
+      "nome": "Eine Kleine Nachtmusik",
+      "arquivo": "../assets/musicas/Eine Kleine Nachtmusik.mp3"
+    },
+    {
+      "id": 2,
+      "nome": "Beethoven - Moonlight Sonata 1st Movement",
+      "arquivo": "../assets/musicas/Beethoven - Moonlight Sonata 1st Movement (320 kbps).mp3"
+    },
+    {
+      "id": 3,
+      "nome": "Erik Satie - Gymnopédie No.1",
+      "arquivo": "/musicas/Gymnopedie.mp3"
+    },
+    {
+      "id": 4,
+      "nome": "Antonio Vivaldi - Storm",
+      "arquivo": "/musicas/Storm.mp3"
+    }
   ]
 }

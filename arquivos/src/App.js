@@ -11,6 +11,7 @@ import MusicList from './componentes/MusicList';
 import CadastroPlaylist from './cadastro_playlist/cadastro_playlist.js';
 import PaginaCadastro from './pagina_cadastro/pagina_cadastro.js';
 import Deletar from "./data/cardMusic"
+import MusicSearch from './data/MusicSearch';
 function App() {
   return (
     <BrowserRouter>
@@ -25,6 +26,7 @@ function App() {
               <Route path="/playlists/playlist/:id"  element={<MusicList />} />
               <Route path="/cadastro_playlist" element={<CadastroPlaylist/>} />
               <Route path="/data/cardMusic.js" element={<Deletar/>} />
+              <Route path="/playlists/search/" element={<MusicSearch />} />
             </Routes>
             <Footer/>
             
